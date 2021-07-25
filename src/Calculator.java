@@ -216,7 +216,7 @@ public class Calculator implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()==zeroButton) {
-			if(isOperateClicked) {
+			if(isOperateClicked || isEquelsClicked) {
 				displayLabel.setText("0");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -225,7 +225,7 @@ public class Calculator implements ActionListener {
 			}
 			
 		}else if(e.getSource()==oneButton){
-			if(isOperateClicked) {
+			if(isOperateClicked || isEquelsClicked ) {
 				displayLabel.setText("1");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -233,7 +233,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"1");
 			}
 		}else if(e.getSource()==twoButton) {
-			if(isOperateClicked) {
+			if(isOperateClicked || isEquelsClicked) {
 				displayLabel.setText("2");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -241,7 +241,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"2");
 			}
 		}else if(e.getSource()==threeButton) {
-			if(isOperateClicked) {
+			if(isOperateClicked || isEquelsClicked) {
 				displayLabel.setText("3");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -249,7 +249,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"3");
 			}
 		}else if(e.getSource()==fourButton) {
-			if(isOperateClicked) {
+			if(isOperateClicked || isEquelsClicked) {
 				displayLabel.setText("4");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -257,7 +257,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"4");
 			}
 		}else if(e.getSource()==fiveButton) {
-			if(isOperateClicked) {
+			if(isOperateClicked || isEquelsClicked) {
 				displayLabel.setText("5");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -265,7 +265,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"5");
 			}
 		}else if(e.getSource()==sixButton) {
-			if(isOperateClicked) {
+			if(isOperateClicked || isEquelsClicked) {
 				displayLabel.setText("6");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -273,7 +273,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"6");
 			}
 		}else if(e.getSource()==sevenButton) {
-			if(isOperateClicked) {
+			if(isOperateClicked || isEquelsClicked) {
 				displayLabel.setText("7");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -326,6 +326,11 @@ public class Calculator implements ActionListener {
 					displayLabel.setText(result+"");
 					isDivClicked=false;
 				}	
+				
+				isDivClicked=false;
+				isMultClicked=false;
+				isSubClicked=false;
+				isAddClicked=false;
 			}
 			
 			
