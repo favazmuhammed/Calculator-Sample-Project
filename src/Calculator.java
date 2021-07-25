@@ -12,22 +12,11 @@ public class Calculator implements ActionListener {
 	
 	JFrame jf;
 	JLabel displayLabel;
-	JButton sevenButton;
-	JButton eightButton;
-	JButton nineButton;
-	JButton fourButton;
-	JButton fiveButton;
-	JButton sixButton;
-	JButton oneButton;
-	JButton twoButton;
-	JButton threeButton;
-	JButton dotButton;
-	JButton zeroButton;
-	JButton equelButton;
-	JButton divButton;
-	JButton mulButton;
-	JButton subButton;
-	JButton addButton;
+	JButton fiveButton, sixButton, sevenButton, eightButton, nineButton;
+	JButton zeroButton, oneButton, twoButton, threeButton, fourButton;
+	JButton dotButton, equelButton, clearButton;
+	JButton divButton, mulButton, subButton, addButton;
+	float sum=0;
 	
 	public Calculator(){
 		
@@ -136,25 +125,36 @@ public class Calculator implements ActionListener {
 		divButton.setBounds(290, 100, 80, 80);
 		divButton.setBackground(Color.white);
 		divButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		divButton.addActionListener(this);
 		jf.add(divButton);
 		
 		mulButton=new JButton("x");
 		mulButton.setBounds(290, 195, 80, 80);
 		mulButton.setBackground(Color.white);
 		mulButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		mulButton.addActionListener(this);
 		jf.add(mulButton);
 		
 		subButton=new JButton("-");
 		subButton.setBounds(290, 290, 80, 80);
 		subButton.setBackground(Color.white);
 		subButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		subButton.addActionListener(this);
 		jf.add(subButton);
 		
 		addButton=new JButton("+");
 		addButton.setBounds(290, 385, 80, 80);
 		addButton.setBackground(Color.white);
 		addButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		addButton.addActionListener(this);
 		jf.add(addButton);
+		
+		clearButton=new JButton("Clear");
+		clearButton.setBounds(380, 385, 120, 80);
+		clearButton.setBackground(Color.white);
+		clearButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		clearButton.addActionListener(this);
+		jf.add(clearButton);
 		
 		
 		jf.setVisible(true);
@@ -164,6 +164,7 @@ public class Calculator implements ActionListener {
 		
 		
 	}
+			
 	
 	public static void main(String[] args) {
 		
@@ -175,28 +176,31 @@ public class Calculator implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()==zeroButton) {
-			displayLabel.setText("0");	
+			displayLabel.setText(displayLabel.getText()+"0");
 		}else if(e.getSource()==oneButton){
-			displayLabel.setText("1");
+			displayLabel.setText(displayLabel.getText()+"1");
 		}else if(e.getSource()==twoButton) {
-			displayLabel.setText("2");
+			displayLabel.setText(displayLabel.getText()+"2");
 		}else if(e.getSource()==threeButton) {
-			displayLabel.setText("3");
+			String labelText=displayLabel.getText();
+			displayLabel.setText(labelText+"3");
 		}else if(e.getSource()==fourButton) {
-			displayLabel.setText("4");
+			displayLabel.setText(displayLabel.getText()+"4");
 		}else if(e.getSource()==fiveButton) {
-			displayLabel.setText("5");
+			displayLabel.setText(displayLabel.getText()+"5");
 		}else if(e.getSource()==sixButton) {
-			displayLabel.setText("6");
+			displayLabel.setText(displayLabel.getText()+"6");
 		}else if(e.getSource()==sevenButton) {
-			displayLabel.setText("7");
+			displayLabel.setText(displayLabel.getText()+"7");
 		}else if(e.getSource()==eightButton) {
-			displayLabel.setText("8");
+			displayLabel.setText(displayLabel.getText()+"8");
 		}else if(e.getSource()==nineButton) {
-			displayLabel.setText("9");
+			displayLabel.setText(displayLabel.getText()+"9");
 		}else if(e.getSource()==dotButton) {
-			
+			displayLabel.setText(displayLabel.getText()+".");
 		}else if(e.getSource()==equelButton) {
+			displayLabel.setText(Float.toString(sum));
+			
 			
 		}else if(e.getSource()==divButton) {
 			
@@ -206,8 +210,12 @@ public class Calculator implements ActionListener {
 			
 		}else if(e.getSource()==addButton) {
 			
+			sum = sum + Float.parseFloat(displayLabel.getText());
+			displayLabel.setText("");	
+			
+		}else if(e.getSource()==clearButton) {
+			displayLabel.setText("");	
 		}
-		
 		
 		
 		
