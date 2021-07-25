@@ -17,8 +17,8 @@ public class Calculator implements ActionListener {
 	boolean isMultClicked=false;
 	boolean isDivClicked=false;
 	boolean isEquelsClicked=false;
-	boolean isMultipleAdd=false;
-	boolean isMultipleSub=false;
+	boolean isMultipleOperation=false;
+	
 	
 	
 	String oldValue;
@@ -189,7 +189,7 @@ public class Calculator implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()==zeroButton) {
-			if(isOperateClicked || isEquelsClicked) {
+			if(isOperateClicked) {
 				displayLabel.setText("0");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -198,7 +198,7 @@ public class Calculator implements ActionListener {
 			}
 			
 		}else if(e.getSource()==oneButton){
-			if(isOperateClicked || isEquelsClicked) {
+			if(isOperateClicked) {
 				displayLabel.setText("1");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -206,7 +206,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"1");
 			}
 		}else if(e.getSource()==twoButton) {
-			if(isOperateClicked || isEquelsClicked) {
+			if(isOperateClicked) {
 				displayLabel.setText("2");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -214,7 +214,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"2");
 			}
 		}else if(e.getSource()==threeButton) {
-			if(isOperateClicked || isEquelsClicked) {
+			if(isOperateClicked) {
 				displayLabel.setText("3");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -222,7 +222,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"3");
 			}
 		}else if(e.getSource()==fourButton) {
-			if(isOperateClicked || isEquelsClicked) {
+			if(isOperateClicked) {
 				displayLabel.setText("4");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -230,7 +230,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"4");
 			}
 		}else if(e.getSource()==fiveButton) {
-			if(isOperateClicked || isEquelsClicked) {
+			if(isOperateClicked) {
 				displayLabel.setText("5");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -238,7 +238,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"5");
 			}
 		}else if(e.getSource()==sixButton) {
-			if(isOperateClicked || isEquelsClicked) {
+			if(isOperateClicked) {
 				displayLabel.setText("6");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -246,7 +246,7 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(displayLabel.getText()+"6");
 			}
 		}else if(e.getSource()==sevenButton) {
-			if(isOperateClicked || isEquelsClicked) {
+			if(isOperateClicked) {
 				displayLabel.setText("7");
 				isOperateClicked=false;
 				isEquelsClicked=false;
@@ -301,6 +301,7 @@ public class Calculator implements ActionListener {
 				}	
 			}
 			
+			
 		}else if(e.getSource()==divButton) {
 			isOperateClicked=true;
 			isDivClicked=true;
@@ -313,8 +314,8 @@ public class Calculator implements ActionListener {
 			
 		}else if(e.getSource()==subButton) {
 			isOperateClicked=true;
-			if (isAddClicked || isSubClicked) {
-				isMultipleSub=true;
+			if (isAddClicked || isSubClicked || isEquelsClicked) {
+				isMultipleOperation=true;
 			}else {
 				isSubClicked=true;
 			}
@@ -327,14 +328,21 @@ public class Calculator implements ActionListener {
 				displayLabel.setText(oldValue);
 				isSubClicked=true;
 				isAddClicked=false;
+				isEquelsClicked=false;
+			}else if(isEquelsClicked) {
+				oldValue=displayLabel.getText();
+				displayLabel.setText(oldValue);
+				isEquelsClicked=false;
+				isSubClicked=true;
+				
 			}else{
-				if(isMultipleSub) {
+				if(isMultipleOperation) {
 					float newValue=Float.parseFloat(displayLabel.getText());
 					float oldValueF=Float.parseFloat(oldValue);
 					float result=oldValueF-newValue;
 					oldValue=Float.toString(result);
 					displayLabel.setText(oldValue);
-					isMultipleSub=false;
+					isMultipleOperation=false;
 					isSubClicked=true;
 					
 				}else {
@@ -345,8 +353,8 @@ public class Calculator implements ActionListener {
 			
 		}else if(e.getSource()==addButton) {
 			isOperateClicked=true;
-			if (isAddClicked || isSubClicked) {
-				isMultipleAdd=true;
+			if (isAddClicked || isSubClicked || isEquelsClicked) {
+				isMultipleOperation=true;
 			}else {
 				isAddClicked=true;
 			}
@@ -358,15 +366,22 @@ public class Calculator implements ActionListener {
 				oldValue=Float.toString(result);
 				displayLabel.setText(oldValue);
 				isSubClicked=false;
+				isEquelsClicked=false;
 				isAddClicked=true;
+			}else if(isEquelsClicked) {
+				oldValue=displayLabel.getText();
+				displayLabel.setText(oldValue);
+				isEquelsClicked=false;
+				isAddClicked=true;
+				
 			}else{
-				if(isMultipleAdd) {
+				if(isMultipleOperation) {
 					float newValue=Float.parseFloat(displayLabel.getText());
 					float oldValueF=Float.parseFloat(oldValue);
 					float result=oldValueF+newValue;
 					oldValue=Float.toString(result);
 					displayLabel.setText(oldValue);
-					isMultipleAdd=false;
+					isMultipleOperation=false;
 					isAddClicked=true;
 					
 				}else {
