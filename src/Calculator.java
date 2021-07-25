@@ -12,6 +12,12 @@ public class Calculator implements ActionListener {
 	
 	
 	boolean isOperateClicked=false;
+	boolean isAddClicked=false;
+	boolean isSubClicked=false;
+	boolean isMultClicked=false;
+	boolean isDivClicked=false;
+	
+	
 	String oldValue;
 	
 	JFrame jf;
@@ -256,19 +262,49 @@ public class Calculator implements ActionListener {
 		}else if(e.getSource()==equelButton) {
 			float newValue=Float.parseFloat(displayLabel.getText());
 			float oldValueF=Float.parseFloat(oldValue);
-			float result = newValue+oldValueF;
 			
-			displayLabel.setText(result+"");
-			
+			if(isAddClicked) {
+				float result = newValue+oldValueF;
+				displayLabel.setText(result+"");
+				isAddClicked=false;
+			}else if(isSubClicked) {
+				float result = oldValueF-newValue;
+				displayLabel.setText(result+"");
+				isSubClicked=false;
+			}else if(isMultClicked){
+				float result = oldValueF * newValue;
+				displayLabel.setText(result+"");
+				isMultClicked=false;
+			}else if(isDivClicked) {
+				
+				if(newValue==0) {
+					displayLabel.setText("Syntax Error!!!");
+					
+				}else {
+					float result = oldValueF / newValue;
+					displayLabel.setText(result+"");
+					isDivClicked=false;
+				}	
+			}
 			
 		}else if(e.getSource()==divButton) {
+			isOperateClicked=true;
+			isDivClicked=true;
+			oldValue=displayLabel.getText();
 			
 		}else if(e.getSource()==mulButton) {
+			isOperateClicked=true;
+			isMultClicked=true;
+			oldValue=displayLabel.getText();
 			
 		}else if(e.getSource()==subButton) {
+			isOperateClicked=true;
+			isSubClicked=true;
+			oldValue=displayLabel.getText();
 			
 		}else if(e.getSource()==addButton) {
 			isOperateClicked=true;
+			isAddClicked=true;
 			oldValue=displayLabel.getText();
 			
 			
