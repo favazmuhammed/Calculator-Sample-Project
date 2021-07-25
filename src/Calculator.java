@@ -17,6 +17,8 @@ public class Calculator implements ActionListener {
 	boolean isMultClicked=false;
 	boolean isDivClicked=false;
 	boolean isEquelsClicked=false;
+	boolean isMultipleAdd=false;
+	boolean isMultipleSub=false;
 	
 	
 	String oldValue;
@@ -311,15 +313,67 @@ public class Calculator implements ActionListener {
 			
 		}else if(e.getSource()==subButton) {
 			isOperateClicked=true;
-			isSubClicked=true;
-			oldValue=displayLabel.getText();
+			if (isAddClicked || isSubClicked) {
+				isMultipleSub=true;
+			}else {
+				isSubClicked=true;
+			}
+			
+			if(isAddClicked) {
+				float newValue=Float.parseFloat(displayLabel.getText());
+				float oldValueF=Float.parseFloat(oldValue);
+				float result=oldValueF+newValue;
+				oldValue=Float.toString(result);
+				displayLabel.setText(oldValue);
+				isSubClicked=true;
+				isAddClicked=false;
+			}else{
+				if(isMultipleSub) {
+					float newValue=Float.parseFloat(displayLabel.getText());
+					float oldValueF=Float.parseFloat(oldValue);
+					float result=oldValueF-newValue;
+					oldValue=Float.toString(result);
+					displayLabel.setText(oldValue);
+					isMultipleSub=false;
+					isSubClicked=true;
+					
+				}else {
+					oldValue=displayLabel.getText();
+					displayLabel.setText(oldValue+"");	
+				}	
+			}
 			
 		}else if(e.getSource()==addButton) {
 			isOperateClicked=true;
-			isAddClicked=true;
-			oldValue=displayLabel.getText();
+			if (isAddClicked || isSubClicked) {
+				isMultipleAdd=true;
+			}else {
+				isAddClicked=true;
+			}
 			
-			
+			if(isSubClicked) {
+				float newValue=Float.parseFloat(displayLabel.getText());
+				float oldValueF=Float.parseFloat(oldValue);
+				float result=oldValueF-newValue;
+				oldValue=Float.toString(result);
+				displayLabel.setText(oldValue);
+				isSubClicked=false;
+				isAddClicked=true;
+			}else{
+				if(isMultipleAdd) {
+					float newValue=Float.parseFloat(displayLabel.getText());
+					float oldValueF=Float.parseFloat(oldValue);
+					float result=oldValueF+newValue;
+					oldValue=Float.toString(result);
+					displayLabel.setText(oldValue);
+					isMultipleAdd=false;
+					isAddClicked=true;
+					
+				}else {
+					oldValue=displayLabel.getText();
+					displayLabel.setText(oldValue+"");	
+				}	
+			}
 		}else if(e.getSource()==clearButton) {
 			displayLabel.setText("");	
 		}
