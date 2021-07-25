@@ -304,20 +304,10 @@ public class Calculator implements ActionListener {
 			
 		}else if(e.getSource()==divButton) {
 			isOperateClicked=true;
-			isDivClicked=true;
-			oldValue=displayLabel.getText();
-			
-		}else if(e.getSource()==mulButton) {
-			isOperateClicked=true;
-			isMultClicked=true;
-			oldValue=displayLabel.getText();
-			
-		}else if(e.getSource()==subButton) {
-			isOperateClicked=true;
-			if (isAddClicked || isSubClicked || isEquelsClicked) {
+			if (isAddClicked || isSubClicked || isMultClicked || isDivClicked||isEquelsClicked) {
 				isMultipleOperation=true;
 			}else {
-				isSubClicked=true;
+				isDivClicked=true;
 			}
 			
 			if(isAddClicked) {
@@ -326,24 +316,39 @@ public class Calculator implements ActionListener {
 				float result=oldValueF+newValue;
 				oldValue=Float.toString(result);
 				displayLabel.setText(oldValue);
-				isSubClicked=true;
 				isAddClicked=false;
-				isEquelsClicked=false;
+				isDivClicked=true;
+			}else if(isSubClicked) {
+				float newValue=Float.parseFloat(displayLabel.getText());
+				float oldValueF=Float.parseFloat(oldValue);
+				float result=oldValueF-newValue;
+				oldValue=Float.toString(result);
+				displayLabel.setText(oldValue);
+				isSubClicked=false;
+				isDivClicked=true;
+			}else if(isMultClicked) {
+				float newValue=Float.parseFloat(displayLabel.getText());
+				float oldValueF=Float.parseFloat(oldValue);
+				float result=oldValueF*newValue;
+				oldValue=Float.toString(result);
+				displayLabel.setText(oldValue);
+				isMultClicked=false;
+				isDivClicked=true;
 			}else if(isEquelsClicked) {
 				oldValue=displayLabel.getText();
 				displayLabel.setText(oldValue);
 				isEquelsClicked=false;
-				isSubClicked=true;
+				isDivClicked=true;
 				
 			}else{
 				if(isMultipleOperation) {
 					float newValue=Float.parseFloat(displayLabel.getText());
 					float oldValueF=Float.parseFloat(oldValue);
-					float result=oldValueF-newValue;
+					float result=oldValueF/newValue;
 					oldValue=Float.toString(result);
 					displayLabel.setText(oldValue);
 					isMultipleOperation=false;
-					isSubClicked=true;
+					isDivClicked=true;
 					
 				}else {
 					oldValue=displayLabel.getText();
@@ -351,9 +356,117 @@ public class Calculator implements ActionListener {
 				}	
 			}
 			
+		}else if(e.getSource()==mulButton) {
+			isOperateClicked=true;
+			if (isAddClicked || isSubClicked || isMultClicked || isDivClicked||isEquelsClicked) {
+				isMultipleOperation=true;
+			}else {
+				isMultClicked=true;
+			}
+			
+			if(isAddClicked) {
+				float newValue=Float.parseFloat(displayLabel.getText());
+				float oldValueF=Float.parseFloat(oldValue);
+				float result=oldValueF+newValue;
+				oldValue=Float.toString(result);
+				displayLabel.setText(oldValue);
+				isAddClicked=false;
+				isMultClicked=true;
+			}else if(isSubClicked) {
+				float newValue=Float.parseFloat(displayLabel.getText());
+				float oldValueF=Float.parseFloat(oldValue);
+				float result=oldValueF-newValue;
+				oldValue=Float.toString(result);
+				displayLabel.setText(oldValue);
+				isSubClicked=false;
+				isMultClicked=true;
+			}else if(isDivClicked) {
+				float newValue=Float.parseFloat(displayLabel.getText());
+				float oldValueF=Float.parseFloat(oldValue);
+				float result=oldValueF/newValue;
+				oldValue=Float.toString(result);
+				displayLabel.setText(oldValue);
+				isDivClicked=false;
+				isMultClicked=true;
+			}else if(isEquelsClicked) {
+				oldValue=displayLabel.getText();
+				displayLabel.setText(oldValue);
+				isEquelsClicked=false;
+				isMultClicked=true;
+				
+			}else{
+				if(isMultipleOperation) {
+					float newValue=Float.parseFloat(displayLabel.getText());
+					float oldValueF=Float.parseFloat(oldValue);
+					float result=oldValueF*newValue;
+					oldValue=Float.toString(result);
+					displayLabel.setText(oldValue);
+					isMultipleOperation=false;
+					isMultClicked=true;
+					
+				}else {
+					oldValue=displayLabel.getText();
+					displayLabel.setText(oldValue+"");	
+				}	
+			}
+			
+		}else if(e.getSource()==subButton) {
+			isOperateClicked=true;
+		if (isAddClicked || isSubClicked || isMultClicked || isDivClicked||isEquelsClicked) {
+			isMultipleOperation=true;
+		}else {
+			isSubClicked=true;
+		}
+		
+		if(isAddClicked) {
+			float newValue=Float.parseFloat(displayLabel.getText());
+			float oldValueF=Float.parseFloat(oldValue);
+			float result=oldValueF+newValue;
+			oldValue=Float.toString(result);
+			displayLabel.setText(oldValue);
+			isAddClicked=false;
+			isSubClicked=true;
+		}else if(isMultClicked) {
+			float newValue=Float.parseFloat(displayLabel.getText());
+			float oldValueF=Float.parseFloat(oldValue);
+			float result=oldValueF*newValue;
+			oldValue=Float.toString(result);
+			displayLabel.setText(oldValue);
+			isMultClicked=false;
+			isSubClicked=true;
+		}else if(isDivClicked) {
+			float newValue=Float.parseFloat(displayLabel.getText());
+			float oldValueF=Float.parseFloat(oldValue);
+			float result=oldValueF/newValue;
+			oldValue=Float.toString(result);
+			displayLabel.setText(oldValue);
+			isDivClicked=false;
+			isSubClicked=true;
+		}else if(isEquelsClicked) {
+			oldValue=displayLabel.getText();
+			displayLabel.setText(oldValue);
+			isEquelsClicked=false;
+			isSubClicked=true;
+			
+		}else{
+			if(isMultipleOperation) {
+				float newValue=Float.parseFloat(displayLabel.getText());
+				float oldValueF=Float.parseFloat(oldValue);
+				float result=oldValueF-newValue;
+				oldValue=Float.toString(result);
+				displayLabel.setText(oldValue);
+				isMultipleOperation=false;
+				isSubClicked=true;
+				
+			}else {
+				oldValue=displayLabel.getText();
+				displayLabel.setText(oldValue+"");	
+			}	
+		}
+			
 		}else if(e.getSource()==addButton) {
 			isOperateClicked=true;
-			if (isAddClicked || isSubClicked || isEquelsClicked) {
+			if (isAddClicked || isSubClicked || isMultClicked || isDivClicked||isEquelsClicked) {
 				isMultipleOperation=true;
 			}else {
 				isAddClicked=true;
@@ -366,7 +479,22 @@ public class Calculator implements ActionListener {
 				oldValue=Float.toString(result);
 				displayLabel.setText(oldValue);
 				isSubClicked=false;
-				isEquelsClicked=false;
+				isAddClicked=true;
+			}else if(isMultClicked) {
+				float newValue=Float.parseFloat(displayLabel.getText());
+				float oldValueF=Float.parseFloat(oldValue);
+				float result=oldValueF*newValue;
+				oldValue=Float.toString(result);
+				displayLabel.setText(oldValue);
+				isMultClicked=false;
+				isAddClicked=true;
+			}else if(isDivClicked) {
+				float newValue=Float.parseFloat(displayLabel.getText());
+				float oldValueF=Float.parseFloat(oldValue);
+				float result=oldValueF/newValue;
+				oldValue=Float.toString(result);
+				displayLabel.setText(oldValue);
+				isDivClicked=false;
 				isAddClicked=true;
 			}else if(isEquelsClicked) {
 				oldValue=displayLabel.getText();
@@ -392,9 +520,7 @@ public class Calculator implements ActionListener {
 		}else if(e.getSource()==clearButton) {
 			displayLabel.setText("");	
 		}
-		
-		
-		
+			
 		
 		
 	}
