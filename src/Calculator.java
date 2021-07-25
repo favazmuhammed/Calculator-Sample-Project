@@ -164,20 +164,19 @@ public class Calculator implements ActionListener {
 		subButton.addActionListener(this);
 		jf.add(subButton);
 		
-		zeroButton=new JButton("0");
-		zeroButton.setBounds(10, 380, 60, 60);
-		zeroButton.setBackground(Color.white);
-		zeroButton.setFont(new Font("Arial", Font.PLAIN, 30));
-		zeroButton.addActionListener(this);
-		jf.add(zeroButton);
-		
 		dotButton=new JButton(".");
-		dotButton.setBounds(80, 380, 60, 60);
+		dotButton.setBounds(10, 380, 60, 60);
 		dotButton.setBackground(Color.white);
 		dotButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		dotButton.addActionListener(this);
 		jf.add(dotButton);
 		
+		zeroButton=new JButton("0");
+		zeroButton.setBounds(80, 380, 60, 60);
+		zeroButton.setBackground(Color.white);
+		zeroButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		zeroButton.addActionListener(this);
+		jf.add(zeroButton);
 	
 		equelButton=new JButton("=");
 		equelButton.setBounds(150, 380, 60, 60);
