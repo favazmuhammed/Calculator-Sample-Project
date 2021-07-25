@@ -29,145 +29,172 @@ public class Calculator implements ActionListener {
 	JButton zeroButton, oneButton, twoButton, threeButton, fourButton;
 	JButton dotButton, equelButton, clearButton;
 	JButton divButton, mulButton, subButton, addButton;
+	JButton mplusButton, mminusButton, mrButton;
 	
 	
 	public Calculator(){
 		
 		jf=new JFrame("Calculator");
 		jf.setLayout(null);
-		jf.setSize(600, 600);
+		jf.setSize(310, 490);
 		jf.setLocation(250, 150);
 		
 		displayLabel=new JLabel();
-		displayLabel.setBounds(20, 20, 540, 60);
+		displayLabel.setBounds(10, 10, 270, 80);
 		displayLabel.setBackground(Color.gray);
 		displayLabel.setOpaque(true);
 		displayLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		displayLabel.setForeground(Color.white);
 		jf.add(displayLabel);
 		
+		
+		clearButton=new JButton("MC");
+		clearButton.setBounds(10, 100, 60, 60);
+		clearButton.setBackground(Color.white);
+		clearButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		clearButton.addActionListener(this);
+		jf.add(clearButton);
+		
+		mplusButton=new JButton("M+");
+		mplusButton.setBounds(80, 100, 60, 60);
+		mplusButton.setBackground(Color.white);
+		mplusButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		mplusButton.addActionListener(this);
+		jf.add(mplusButton);
+		
+		mminusButton=new JButton("M-");
+		mminusButton.setBounds(150, 100, 60, 60);
+		mminusButton.setBackground(Color.white);
+		mminusButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		mminusButton.addActionListener(this);
+		jf.add(mminusButton);
+		
+		mrButton=new JButton("MR");
+		mrButton.setBounds(220, 100, 60, 60);
+		mrButton.setBackground(Color.white);
+		mrButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		mrButton.addActionListener(this);
+		jf.add(mrButton);
+		
+		
+		
 		sevenButton=new JButton("7");
-		sevenButton.setBounds(20, 100, 80, 80);
+		sevenButton.setBounds(10, 170, 60, 60);
 		sevenButton.setBackground(Color.white);
-		sevenButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		sevenButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		sevenButton.addActionListener(this);
 		jf.add(sevenButton);
 		
 		eightButton=new JButton("8");
-		eightButton.setBounds(110, 100, 80, 80);
+		eightButton.setBounds(80, 170, 60, 60);
 		eightButton.setBackground(Color.white);
-		eightButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		eightButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		eightButton.addActionListener(this);
 		jf.add(eightButton);
 		
 		nineButton=new JButton("9");
-		nineButton.setBounds(200, 100, 80, 80);
+		nineButton.setBounds(150, 170, 60, 60);
 		nineButton.setBackground(Color.white);
-		nineButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		nineButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		nineButton.addActionListener(this);
 		jf.add(nineButton);
 		
+		divButton=new JButton("/");
+		divButton.setBounds(220, 170, 60, 60);
+		divButton.setBackground(Color.white);
+		divButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		divButton.addActionListener(this);
+		jf.add(divButton);
 		
 		
 		fourButton=new JButton("4");
-		fourButton.setBounds(20, 195, 80, 80);
+		fourButton.setBounds(10, 240, 60, 60);
 		fourButton.setBackground(Color.white);
-		fourButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		fourButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		fourButton.addActionListener(this);
 		jf.add(fourButton);
 		
 		fiveButton=new JButton("5");
-		fiveButton.setBounds(110, 195, 80, 80);
+		fiveButton.setBounds(80, 240, 60, 60);
 		fiveButton.setBackground(Color.white);
-		fiveButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		fiveButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		fiveButton.addActionListener(this);
 		jf.add(fiveButton);
 		
 		sixButton=new JButton("6");
-		sixButton.setBounds(200, 195, 80, 80);
+		sixButton.setBounds(150, 240, 60, 60);
 		sixButton.setBackground(Color.white);
-		sixButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		sixButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		sixButton.addActionListener(this);
 		jf.add(sixButton);
 		
+		mulButton=new JButton("x");
+		mulButton.setBounds(220, 240, 60, 60);
+		mulButton.setBackground(Color.white);
+		mulButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		mulButton.addActionListener(this);
+		jf.add(mulButton);
+		
 		
 		oneButton=new JButton("1");
-		oneButton.setBounds(20, 290, 80, 80);
+		oneButton.setBounds(10, 310, 60, 60);
 		oneButton.setBackground(Color.white);
-		oneButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		oneButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		oneButton.addActionListener(this);
 		jf.add(oneButton);
 		
 		twoButton=new JButton("2");
-		twoButton.setBounds(110, 290, 80, 80);
+		twoButton.setBounds(80, 310, 60, 60);
 		twoButton.setBackground(Color.white);
-		twoButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		twoButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		twoButton.addActionListener(this);
 		jf.add(twoButton);
 		
 		threeButton=new JButton("3");
-		threeButton.setBounds(200, 290, 80, 80);
+		threeButton.setBounds(150, 310, 60, 60);
 		threeButton.setBackground(Color.white);
-		threeButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		threeButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		threeButton.addActionListener(this);
 		jf.add(threeButton);
 		
-		
-		dotButton=new JButton(".");
-		dotButton.setBounds(20, 385, 80, 80);
-		dotButton.setBackground(Color.white);
-		dotButton.setFont(new Font("Arial", Font.PLAIN, 40));
-		dotButton.addActionListener(this);
-		jf.add(dotButton);
-		
-		zeroButton=new JButton("0");
-		zeroButton.setBounds(110, 385, 80, 80);
-		zeroButton.setBackground(Color.white);
-		zeroButton.setFont(new Font("Arial", Font.PLAIN, 40));
-		zeroButton.addActionListener(this);
-		jf.add(zeroButton);
-		
-		equelButton=new JButton("=");
-		equelButton.setBounds(200, 385, 80, 80);
-		equelButton.setBackground(Color.white);
-		equelButton.setFont(new Font("Arial", Font.PLAIN, 40));
-		equelButton.addActionListener(this);
-		jf.add(equelButton);
-		
-		divButton=new JButton("/");
-		divButton.setBounds(290, 100, 80, 80);
-		divButton.setBackground(Color.white);
-		divButton.setFont(new Font("Arial", Font.PLAIN, 40));
-		divButton.addActionListener(this);
-		jf.add(divButton);
-		
-		mulButton=new JButton("x");
-		mulButton.setBounds(290, 195, 80, 80);
-		mulButton.setBackground(Color.white);
-		mulButton.setFont(new Font("Arial", Font.PLAIN, 40));
-		mulButton.addActionListener(this);
-		jf.add(mulButton);
-		
 		subButton=new JButton("-");
-		subButton.setBounds(290, 290, 80, 80);
+		subButton.setBounds(220, 310, 60, 60);
 		subButton.setBackground(Color.white);
-		subButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		subButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		subButton.addActionListener(this);
 		jf.add(subButton);
 		
+		zeroButton=new JButton("0");
+		zeroButton.setBounds(10, 380, 60, 60);
+		zeroButton.setBackground(Color.white);
+		zeroButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		zeroButton.addActionListener(this);
+		jf.add(zeroButton);
+		
+		dotButton=new JButton(".");
+		dotButton.setBounds(80, 380, 60, 60);
+		dotButton.setBackground(Color.white);
+		dotButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		dotButton.addActionListener(this);
+		jf.add(dotButton);
+		
+	
+		equelButton=new JButton("=");
+		equelButton.setBounds(150, 380, 60, 60);
+		equelButton.setBackground(Color.white);
+		equelButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		equelButton.addActionListener(this);
+		jf.add(equelButton);
+		
+		
 		addButton=new JButton("+");
-		addButton.setBounds(290, 385, 80, 80);
+		addButton.setBounds(220, 380, 60, 60);
 		addButton.setBackground(Color.white);
-		addButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		addButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		addButton.addActionListener(this);
 		jf.add(addButton);
 		
-		clearButton=new JButton("Clear");
-		clearButton.setBounds(380, 385, 120, 80);
-		clearButton.setBackground(Color.white);
-		clearButton.setFont(new Font("Arial", Font.PLAIN, 30));
-		clearButton.addActionListener(this);
-		jf.add(clearButton);
+		
 		
 		
 		jf.setVisible(true);
