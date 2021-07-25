@@ -45,6 +45,7 @@ public class Calculator implements ActionListener {
 		displayLabel.setOpaque(true);
 		displayLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		displayLabel.setForeground(Color.white);
+		displayLabel.setFont(new Font("Arial", Font.PLAIN, 40));
 		jf.add(displayLabel);
 		
 		
